@@ -9,7 +9,7 @@ A cross-platform Go-library for updating progress in terminal.
 
 ## Example
 
-````
+```go
     func main() {
     	// get an instance of writer
     	writer := goterminal.New()
@@ -29,7 +29,7 @@ A cross-platform Go-library for updating progress in terminal.
     	writer.Reset()
     	fmt.Println("Download finished!")
     }
-````
+```
 Examples can be found [here](https://github.com/apoorvam/goterminal/tree/master/examples).
 
 ### Usage
