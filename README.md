@@ -9,27 +9,29 @@ A cross-platform Go-library for updating progress in terminal.
 
 ## Example
 
-````
-    func main() {
-    	// get an instance of writer
-    	writer := goterminal.New()
+```
+func main() {
+  
+  # get an instance of writer
+  writer := goterminal.New()
 
-    	for i := 0; i < 100; i = i + 10 {
-    		// add your text to writer's buffer
-    		writer.Buf.WriteString(fmt.Sprintf("Downloading (%d/100) bytes...\n", i))
-    		// write to terminal
-    		writer.Write()
-    		time.Sleep(time.Millisecond * 200)
+  for i := 0; i < 100; i = i + 10 {
+    
+    # add your text to writer's buffer
+    writer.Buf.WriteString(fmt.Sprintf("Downloading (%d/100) bytes...\n", i))
+    # write to terminal
+    writer.Write()
+    time.Sleep(time.Millisecond * 200)
 
-    		// clear the text written by previous write, so that it can be re-written.
-    		writer.Clear()
-    	}
+    # clear the text written by previous write, so that it can be re-written.
+    writer.Clear()
+  }
 
-    	// reset the writer
-    	writer.Reset()
-    	fmt.Println("Download finished!")
-    }
-````
+  # reset the writer
+  writer.Reset()
+  fmt.Println("Download finished!")
+}
+```
 Examples can be found [here](https://github.com/apoorvam/goterminal/tree/master/examples).
 
 ### Usage
