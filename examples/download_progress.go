@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/apoorvam/goterminal"
 	"time"
+
+	"github.com/apoorvam/goterminal"
 )
 
 func main() {
