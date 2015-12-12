@@ -22,6 +22,7 @@ A cross-platform Go-library for updating progress in terminal.
     writer.Reset()                  // reset the writer
 	fmt.Println("Download finished")
 ````
+Examples can be found [here](http://github.com/apoorvam/goterminal/examples).
 
 ### Usage
 
