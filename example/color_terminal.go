@@ -19,7 +19,7 @@ func main() {
 
 		time.Sleep(time.Second)
 
-		writer.Buf.WriteString("Some text here.\nThis text may change later.\n")
+		writer.Buf.WriteString("Some text here.\nThis text will change later.\n")
 		writer.Write()
 		time.Sleep(time.Second)
 
@@ -31,7 +31,7 @@ func main() {
 		writer.Write()
 		ct.ResetColor()
 
-		writer.Buf.WriteString("This is new text.\nThis re-writes the old text.\n")
+		writer.Buf.WriteString("This is new text.\nThis is re-written text.\n")
 		writer.Write()
 		time.Sleep(time.Second)
 
