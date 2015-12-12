@@ -7,15 +7,21 @@ import (
 )
 
 func main() {
-	writer := goterminal.New() // get an instance of writer
+	// get an instance of writer
+	writer := goterminal.New()
 
-	for i := 0; i < 100; i = i + 5 {
-		writer.Buf.WriteString(fmt.Sprintf("Downloading (%d/100) bytes...\n", i)) // add your text to writer's buffer
-		writer.Write()                                                            // write to terminal
+	for i := 0; i < 100; i = i + 10 {
+		// add your text to writer's buffer
+		writer.Buf.WriteString(fmt.Sprintf("Downloading (%d/100) bytes...\n", i))
+		// write to terminal
+		writer.Write()
 		time.Sleep(time.Millisecond * 200)
-		writer.Clear() // clear the text written by previous write, so that it can be re-written.
+
+		// clear the text written by previous write, so that it can be re-written.
+		writer.Clear()
 	}
 
-	writer.Reset() // reset the writer
+	// reset the writer
+	writer.Reset()
 	fmt.Println("Download finished!")
 }
