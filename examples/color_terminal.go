@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/apoorvam/goterminal"
 	ct "github.com/daviddengcn/go-colortext"
 	"time"
@@ -13,26 +14,26 @@ func main() {
 			"Color of this text should change to Green after some processing.\n"
 
 		ct.Foreground(ct.Yellow, false)
-		writer.Buf.WriteString(msg)
-		writer.Write()
+		fmt.Fprintf(writer, msg)
+		writer.Print()
 		ct.ResetColor()
 
 		time.Sleep(time.Second)
 
-		writer.Buf.WriteString("Some text here.\nThis text will change later.\n")
-		writer.Write()
+		fmt.Fprint(writer, "Some text here.\nThis text will change later.\n")
+		writer.Print()
 		time.Sleep(time.Second)
 
+		// processing done here, after which color should change or text should be over-written.
 		writer.Clear()
-		// processing done here, after which color should change.
 
 		ct.Foreground(ct.Green, false)
-		writer.Buf.WriteString(msg)
-		writer.Write()
+		fmt.Fprintf(writer, msg)
+		writer.Print()
 		ct.ResetColor()
 
-		writer.Buf.WriteString("This is new text.\nThis is re-written text.\n")
-		writer.Write()
+		fmt.Fprint(writer, "This is new text.\nThis is re-written text.\n")
+		writer.Print()
 		time.Sleep(time.Second)
 
 		writer.Reset()

@@ -40,7 +40,7 @@ func (w *Writer) Reset() {
 
 // Write writes the buffer contents to Out and resets the buffer.
 // It stores the number of lines to go up the Writer in the Writer.lineCount.
-func (w *Writer) Write() error {
+func (w *Writer) Print() error {
 	w.mtx.Lock()
 	defer w.mtx.Unlock()
 	// do nothing if buffer is empty
@@ -64,4 +64,10 @@ func (w *Writer) Write() error {
 	_, err := Out.Write(w.Buf.Bytes())
 	w.Buf.Reset()
 	return err
+}
+
+func (w *Writer) Write(b []byte) (int, error) {
+	w.mtx.Lock()
+	defer w.mtx.Unlock()
+	return w.Buf.Write(b)
 }

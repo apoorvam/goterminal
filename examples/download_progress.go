@@ -12,9 +12,9 @@ func main() {
 
 	for i := 0; i < 100; i = i + 10 {
 		// add your text to writer's buffer
-		writer.Buf.WriteString(fmt.Sprintf("Downloading (%d/100) bytes...\n", i))
+		fmt.Fprintf(writer, "Downloading (%d/100) bytes...\n", i)
 		// write to terminal
-		writer.Write()
+		writer.Print()
 		time.Sleep(time.Millisecond * 200)
 
 		// clear the text written by previous write, so that it can be re-written.
