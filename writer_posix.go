@@ -13,14 +13,14 @@ import (
 // Flush moves the cursor to location where last write started and clears the text written using previous Write.
 func (w *Writer) Clear() {
 	for i := 0; i < w.lineCount; i++ {
-		fmt.Fprintf(Out, "%c[%dA", esc, 0) // move the cursor up
-		fmt.Fprintf(Out, "%c[2K\r", esc)   // clear the line
+		fmt.Fprintf(w.Out, "%c[%dA", esc, 0) // move the cursor up
+		fmt.Fprintf(w.Out, "%c[2K\r", esc)   // clear the line
 	}
 	w.lineCount = 0
 }
 
 // GetTermDimensions returns the width and height of the current terminal
-func GetTermDimensions() (int, int) {
+func (w *Writer) GetTermDimensions() (int, int) {
 	cmd := exec.Command("stty", "size")
 	cmd.Stdin = os.Stdin
 	out, err := cmd.Output()

@@ -46,14 +46,14 @@ type consoleScreenBufferInfo struct {
 
 // Flush moves the cursor to location where last write started and clears the text written using previous Write.
 func (w *Writer) Clear() {
-	f, ok := io.Writer(Out).(*os.File)
+	f, ok := io.Writer(w.Out).(*os.File)
 	if ok && !isatty.IsTerminal(f.Fd()) {
 		ok = false
 	}
 	if !ok {
 		for i := 0; i < w.lineCount; i++ {
-			fmt.Fprintf(Out, "%c[%dA", esc, 0) // move the cursor up
-			fmt.Fprintf(Out, "%c[2K\r", esc)   // clear the line
+			fmt.Fprintf(w.Out, "%c[%dA", esc, 0) // move the cursor up
+			fmt.Fprintf(w.Out, "%c[2K\r", esc)   // clear the line
 		}
 		return
 	}
@@ -78,7 +78,7 @@ func (w *Writer) Clear() {
 }
 
 // GetTermDimensions returns the width and height of the current terminal
-func GetTermDimensions() (int, int) {
+func (w *Writer) GetTermDimensions() (int, int) {
 	f, ok := io.Writer(Out).(*os.File)
 	if !ok {
 		return 80, 25
