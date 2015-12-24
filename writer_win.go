@@ -4,11 +4,12 @@ package goterminal
 
 import (
 	"fmt"
-	"github.com/mattn/go-isatty"
 	"io"
 	"os"
 	"syscall"
 	"unsafe"
+
+	"github.com/mattn/go-isatty"
 )
 
 var kernel32 = syscall.NewLazyDLL("kernel32.dll")
@@ -79,7 +80,7 @@ func (w *Writer) Clear() {
 
 // GetTermDimensions returns the width and height of the current terminal
 func (w *Writer) GetTermDimensions() (int, int) {
-	f, ok := io.Writer(Out).(*os.File)
+	f, ok := io.Writer(w.Out).(*os.File)
 	if !ok {
 		return 80, 25
 	}
