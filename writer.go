@@ -3,14 +3,10 @@ package goterminal
 import (
 	"bytes"
 	"io"
-	"os"
 	"sync"
 )
 
 const esc = 27
-
-// Out is the default output writer to Writer
-var Out = os.Stdout
 
 // termWidth marks the boundary of UI, beyond which text written should go to next line.
 var termWidth int
@@ -24,8 +20,8 @@ type Writer struct {
 }
 
 // New returns a new instance of the Writer. It initializes the terminal width and buffer.
-func New() *Writer {
-	writer := &Writer{Out: Out}
+func New(out io.Writer) *Writer {
+	writer := &Writer{Out: out}
 	if termWidth == 0 {
 		termWidth, _ = writer.GetTermDimensions()
 	}
@@ -40,7 +36,7 @@ func (w *Writer) Reset() {
 	w.lineCount = 0
 }
 
-// Write writes the buffer contents to Out and resets the buffer.
+// Print writes the buffer contents to Out and resets the buffer.
 // It stores the number of lines to go up the Writer in the Writer.lineCount.
 func (w *Writer) Print() error {
 	w.mtx.Lock()

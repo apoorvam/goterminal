@@ -2,13 +2,15 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"time"
+
 	"github.com/apoorvam/goterminal"
 	ct "github.com/daviddengcn/go-colortext"
-	"time"
 )
 
 func main() {
-	writer := goterminal.New()
+	writer := goterminal.New(os.Stdout)
 	for i := 0; i < 5; i++ {
 		msg := "This is a golang library to re-write text on Terminal, works on Windows too!.\n" +
 			"Color of this text should change to Green after some processing."

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/apoorvam/goterminal"
@@ -9,7 +10,7 @@ import (
 
 func main() {
 	// get an instance of writer
-	writer := goterminal.New()
+	writer := goterminal.New(os.Stdout)
 
 	for i := 0; i < 100; i = i + 10 {
 		// add your text to writer's buffer

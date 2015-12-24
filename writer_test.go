@@ -7,9 +7,8 @@ import (
 )
 
 func TestWriter(t *testing.T) {
-	w := New()
 	b := &bytes.Buffer{}
-	w.Out = b
+	w := New(b)
 	fmt.Fprint(w, "foo bar")
 	w.Print()
 
