@@ -12,17 +12,14 @@ import (
 func main() {
 	writer := goterminal.New(os.Stdout)
 	for i := 0; i < 5; i++ {
-		msg := "This is a golang library to re-write text on Terminal, works on Windows too!.\n" +
-			"Color of this text should change to Green after some processing."
-
 		ct.Foreground(ct.Yellow, false)
-		fmt.Fprintln(writer, msg)
+		fmt.Fprintln(writer, "I'm in yellow.")
 		writer.Print()
 		ct.ResetColor()
 
 		time.Sleep(time.Second)
 
-		fmt.Fprintln(writer, "Some text here.\nThis text will change later.")
+		fmt.Fprintln(writer, "Lets change above text to green.")
 		writer.Print()
 		time.Sleep(time.Second)
 
@@ -30,11 +27,11 @@ func main() {
 		writer.Clear()
 
 		ct.Foreground(ct.Green, false)
-		fmt.Fprintln(writer, msg)
+		fmt.Fprintln(writer, "I'm in green now.")
 		writer.Print()
 		ct.ResetColor()
 
-		fmt.Fprintln(writer, "This is new text.\nThis is re-written text.")
+		fmt.Fprintln(writer, "Great!")
 		writer.Print()
 		time.Sleep(time.Second)
 
