@@ -30,6 +30,14 @@ A cross-platform Go-library for updating progress in terminal.
     	fmt.Println("Download finished!")
     }
 ```
+Output : 
+
+![output](doc/download_progress.gif)
+
+Another example which uses the [go-colortext](github.com/daviddengcn/go-colortext) library to re-write text along with using colors. Here is output of example:
+
+![output](doc/color_terminal.gif)
+
 Examples can be found [here](https://github.com/apoorvam/goterminal/tree/master/examples).
 
 ### Usage
