@@ -1,4 +1,4 @@
-# goterminal
+# goterminal [![GoDoc](https://godoc.org/github.com/apoorvam/goterminal?status.svg)](https://godoc.org/github.com/apoorvam/goterminal)
 A cross-platform Go-library for updating progress in terminal.
 
 ## Installation
